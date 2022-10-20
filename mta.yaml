@@ -1,0 +1,101 @@
+_schema-version: "3.2"
+ID: ui5workflowproject
+version: 0.0.1
+modules:
+- name: workflow-module
+  type: com.sap.application.content
+  path: workflow-module
+  requires:
+  - name: workflow
+    parameters:
+      content-target: true
+
+- name: ui5applicationmodule
+  type: html5
+  path: ui5applicationmodule
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: ui5workflowproject-approuter
+  type: approuter.nodejs
+  path: ui5workflowproject-approuter
+  requires:
+  - name: ui5workflowproject_html_repo_runtime
+  - name: uaa_ui5workflowproject
+  - name: workflow
+  - name: ui5workflowproject-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com    
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: ui5workflowproject_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: ui5workflowproject_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - ui5applicationmodule.zip
+      name: ui5applicationmodule
+      target-path: resources/
+resources:
+- name: workflow
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: workflow
+    service-plan: standard
+- name: ui5workflowproject-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: ui5workflowproject-html5-srv
+    service-plan: app-host
+- name: ui5workflowproject-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: ui5workflowproject-destination-service
+    service-plan: lite
+- name: ui5workflowproject_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: ui5workflowproject_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: uaa_ui5workflowproject
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: ui5workflowproject-xsuaa-service
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo

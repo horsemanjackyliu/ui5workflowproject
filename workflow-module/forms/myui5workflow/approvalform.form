@@ -1,0 +1,62 @@
+{
+    "id": "approvalform",
+    "schemaVersion": "1.1.0",
+    "name": "approvalform",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "employee",
+            "type": "string",
+            "label": "Employee",
+            "readOnly": false,
+            "value": "${context.employee}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "it_equipment",
+            "type": "string",
+            "label": "IT Equipment",
+            "readOnly": false,
+            "value": "${context.itequipment}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "quantity",
+            "type": "integer",
+            "label": "Quantity",
+            "readOnly": false,
+            "value": "${context.quantity}",
+            "constraints": {
+                "required": false
+            }
+        },
+        {
+            "id": "comments",
+            "type": "string",
+            "label": "Comments",
+            "readOnly": false,
+            "value": "${context.comments}",
+            "constraints": {
+                "required": false
+            }
+        }
+    ],
+    "decisions": [
+        {
+            "id": "approve",
+            "text": "Approve",
+            "decisionType": "positive"
+        },
+        {
+            "id": "reject",
+            "text": "Reject",
+            "decisionType": ""
+        }
+    ]
+}
