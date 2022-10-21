@@ -7,6 +7,7 @@
                     <Input xmlns="sap.m" value="Value" id="itequipmentInput" placeholder="Type your desired IT equipment"/>
                     <Input xmlns="sap.m" value="Value" id="quantityInput" placeholder="Type your required quantity"/>
                    <Button xmlns="sap.m" text="Send Your Request" id="button0" type="Emphasized" press="pressButton"/>
+                   <Button xmlns="sap.m" text="Send To CPI" id="button1" type="Emphasized" press="sendCpi"/>
                 </items>
             </VBox>
 

@@ -16,7 +16,9 @@
       "toolsId": "dd8fdcc0-2053-428d-9b1b-9ff88c8df515"
     },
     "dataSources": {
-      "mainService": {
+    
+
+        "mainService": {
         "uri": "/sap/opu/odata/",
         "type": "OData",
         "settings": {

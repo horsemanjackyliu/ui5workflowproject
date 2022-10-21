@@ -1,4 +1,10 @@
 {
   "authenticationMethod": "none",
-  "routes": []
+  "routes": [    {
+    "source": "^/cpi/(.*)$",
+    "target": "/$1",
+    "authenticationType": "xsuaa",
+    "csrfProtection": false,
+    "destination": "1s4hccpi"
+  }]
 }
