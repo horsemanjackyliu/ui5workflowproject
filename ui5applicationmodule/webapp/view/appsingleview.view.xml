@@ -6,8 +6,9 @@
                     <Input xmlns="sap.m" value="Value" id="employeeInput" placeholder="Type your name here"/>
                     <Input xmlns="sap.m" value="Value" id="itequipmentInput" placeholder="Type your desired IT equipment"/>
                     <Input xmlns="sap.m" value="Value" id="quantityInput" placeholder="Type your required quantity"/>
-                   <Button xmlns="sap.m" text="Send Your Request" id="button0" type="Emphasized" press="pressButton"/>
-                   <Button xmlns="sap.m" text="Send To CPI" id="button1" type="Emphasized" press="sendCpi"/>
+                   <!-- <Button xmlns="sap.m" text="Send Your Request" id="button0" type="Emphasized" press="pressButton"/> -->
+                   <!-- <Button xmlns="sap.m" text="Send To CPI" id="button1" type="Emphasized" press="sendCpi"/> -->
+                   <Button xmlns="sap.m" text="PDF Render" id="button2" type="Emphasized" press="pdfRender"/>
                 </items>
             </VBox>
 
