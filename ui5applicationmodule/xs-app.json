@@ -16,6 +16,13 @@
         "csrfProtection": false,
         "destination": "adobeapi"
       },
+      {
+        "source": "^/sdi/(.*)$",
+        "target": "/$1",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false,
+        "destination": "sdi"
+      },
     {
       "source": "^/resources/(.*)$",
       "target": "/resources/$1",

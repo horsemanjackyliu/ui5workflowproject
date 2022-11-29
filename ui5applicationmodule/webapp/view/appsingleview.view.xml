@@ -1,14 +1,22 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ui5applicationmodule.controller.appsingleview" displayBlock="true">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" showNavButton="true" icon="sap-icon://attachment">
         <content>
             <VBox width="100%" direction="Column" id="vbox0" alignContent="Center">
                 <items>
-                    <Input xmlns="sap.m" value="Value" id="employeeInput" placeholder="Type your name here"/>
-                    <Input xmlns="sap.m" value="Value" id="itequipmentInput" placeholder="Type your desired IT equipment"/>
-                    <Input xmlns="sap.m" value="Value" id="quantityInput" placeholder="Type your required quantity"/>
-                   <!-- <Button xmlns="sap.m" text="Send Your Request" id="button0" type="Emphasized" press="pressButton"/> -->
-                   <!-- <Button xmlns="sap.m" text="Send To CPI" id="button1" type="Emphasized" press="sendCpi"/> -->
-                   <Button xmlns="sap.m" text="PDF Render" id="button2" type="Emphasized" press="pdfRender"/>
+                <HBox width="100%" id="hbox1">
+                <items>
+                <Label xmlns="sap.m" id="filenamel" text="FileName:"/>
+                <Input xmlns="sap.m" id="filename" editable="true"/>
+                </items>
+                
+                </HBox>
+                <HBox width="100%" id="hbox0">
+                <items>
+                <Label xmlns="sap.m" id="label0" text="Attachment"/>
+                <Input xmlns="sap.m" id="dmsid" editable="false"/>
+                </items>            
+                </HBox>
+                   <Button xmlns="sap.m" text="PDFRenderAndUploadInDms" id="button2" type="Emphasized" press="pdfRender"/>
                 </items>
             </VBox>
 
